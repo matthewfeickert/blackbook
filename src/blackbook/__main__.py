@@ -22,9 +22,11 @@ def main(path: pathlib.Path = None) -> None:
 
         count += 1
 
-    logger.info(f"All done! 📖")
+    s = "s" if reformatted_count > 1 else ""
+
+    logger.info("All done! 📖")
     logger.info(
-        f"{reformatted_count} notebooks reformatted. {count - reformatted_count} left unchanged."
+        f"{reformatted_count} notebook{s} reformatted. {count - reformatted_count} left unchanged."
     )
 
 

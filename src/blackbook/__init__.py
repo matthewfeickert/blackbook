@@ -19,6 +19,7 @@ def format_notebook_content(path: pathlib.Path) -> Optional[dict]:
     try:  # Some ipynb files will not contain json
 
         nb = json.loads(content)
+        print(f"nb: {nb}")
         modification_found = False
         print("passed ipynb files will not contain json try")
 

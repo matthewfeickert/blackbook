@@ -12,6 +12,22 @@ def test_format_notebook_content():
     formatted_notebook_path = data_path / "formatted" / "spaces.ipynb"
     expected_content = formatted_notebook_path.read_text()
     expected_json = json.loads(expected_content)
+    print(
+        [
+            cell["source"] == expected_cell["source"]
+            for cell, expected_cell in zip(output_json["cells"], expected_json["cells"])
+        ]
+    )
+    print(
+        all(
+            [
+                cell["source"] == expected_cell["source"]
+                for cell, expected_cell in zip(
+                    output_json["cells"], expected_json["cells"]
+                )
+            ]
+        )
+    )
     assert all(
         [
             cell["source"] == expected_cell["source"]

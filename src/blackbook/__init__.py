@@ -20,6 +20,7 @@ def format_notebook_content(path: pathlib.Path) -> Optional[dict]:
 
         nb = json.loads(content)
         modification_found = False
+        print("passed ipynb files will not contain json try")
 
         try:  # Some ipynb files will have no cells
 
@@ -40,10 +41,12 @@ def format_notebook_content(path: pathlib.Path) -> Optional[dict]:
             if modification_found:
                 return nb
 
+            print("passed ipynb files will have no cells")
         except KeyError:
             pass
 
     except json.JSONDecodeError:
+        print("except json.JSONDecodeError")
         pass
 
     return None

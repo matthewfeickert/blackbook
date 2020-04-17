@@ -1,4 +1,5 @@
 import json
+import os
 import pathlib
 import sys
 
@@ -9,7 +10,11 @@ import blackbook
 
 def main(path: pathlib.Path = None) -> None:
     if path is None:  # pragma: no cover
-        path = pathlib.Path(sys.argv[1])
+        try:
+            path = pathlib.Path(sys.argv[1])
+        except IndexError:
+            os.popen("black").read()
+            sys.exit(0)
     if not path.exists():
         raise OSError(f"The path {path} is invalid.")
 
